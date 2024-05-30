@@ -12,11 +12,17 @@ public class Train
 
     public static double transit(Train train, Station start_station, Station finish_station, int revenue)
     {
-        if(train.capacity > start_station.passengers)
+        int transit_passengers;
+        if(start_station.passengers >= train.capacity)
         {
-            train.capacity = start_station.passengers;
+            transit_passengers = train.capacity;
         }
+        else
+        {
+            transit_passengers = start_station.passengers;
+        }
+        start_station.passengers -= transit_passengers;
         int distance_travelled = Math.abs(finish_station.distance - start_station.distance);
-        return revenue * distance_travelled - train.cost * distance_travelled;
+        return revenue * transit_passengers - train.cost * distance_travelled;
     }
 }

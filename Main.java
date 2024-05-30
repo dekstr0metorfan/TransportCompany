@@ -10,19 +10,21 @@ public class Main
 
         System.out.println("Podaj liczbe dni, dla ktorych ma sie wykonac symulacja: ");
         int day = scanner.nextInt();
-        System.out.println("Podaj jaki ma byc przychod na kilometr przejazdu pociagu: ");
+        System.out.println("Podaj jaka ma byc cena biletu: ");
         int revenue = scanner.nextInt();
 
-        Station A = new Station("A", 200, 0);
-        Station B = new Station("B", 300, 100);
+        City CityA = new City("CityA", 0);
+        City CityB = new City("CityB", 200);
 
         Train train1 = new Train("A1", 2, 100);
-        Train train2 = new Train("A2", 2, 120);
+        Train train2 = new Train("A2", 3, 120);
 
         for(int i = 0; i < day; i++)
         {
-            budget += Train.transit(train1, A, B, revenue);
-            budget += Train.transit(train2, B, A, revenue);
+            System.out.println("Numer przejazdu: " + i);
+            budget += Train.transit(train1, CityA, CityB, revenue);
+            System.out.println("Pasazerowie w miescie A:" + CityA.passengers);
+            System.out.println("Budzet po tym przejezdzie:" + budget);
         }
 
         System.out.println("W trakcie trwania symulacji osiagnieto profit: " + budget);
