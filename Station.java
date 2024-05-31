@@ -1,17 +1,16 @@
 import java.util.*;
-public class Station
+
+public abstract class Station
 {
-    Random random = new Random();
-    String name; //name of station
-    int passengers; //station capacity
-    int distance; //distance from starting point
-    public Station(String name, int distance)
+    int[] location = new int[2]; //location of the station on a grid in km
+    int passengers; //number of passengers on the station
+    
+    public Station(int x, int y)
     {
-        this.name = name;
-        this.distance = distance;
+        this.location[0] = x;
+        this.location[1] = y;
+        this.passengers = 0;
     }
-    public int calculate_passengers(int min, int max)
-    {
-        return random.nextInt((max-min)+1) + min;
-    }
+    
+    public abstract int calculate_passengers(int min, int max);
 }

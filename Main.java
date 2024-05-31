@@ -13,8 +13,8 @@ public class Main
         System.out.println("Podaj jaka ma byc cena biletu: ");
         int revenue = scanner.nextInt();
 
-        City CityA = new City("CityA", 0);
-        City CityB = new City("CityB", 200);
+        CityStation CityA = new CityStation("CityA", 0);
+        CityStation CityB = new CityStation("CityB", 200);
 
         Train train1 = new Train("A1", 2, 100);
         Train train2 = new Train("A2", 3, 120);
