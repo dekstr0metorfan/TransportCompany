@@ -12,5 +12,5 @@ public abstract class Station
         this.passengers = 0;
     }
     
-    public abstract int calculate_passengers(int min, int max);
+    public abstract void calculate_passengers(int min, int max);
 }

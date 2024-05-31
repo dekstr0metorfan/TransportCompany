@@ -1,28 +1,39 @@
 public class Train
 {
+    static int amount = 0; //total amount of trains
+    
     String ID; //name of train
-    int cost; //cost per km
+    double cost; //cost per km
+    double revenue; //revenue per passenger per km
     int capacity; //train capacity
-    public Train(String ID, int cost, int capacity)
+    
+    public Train()
     {
-        this.ID = ID;
-        this.cost = cost;
-        this.capacity = capacity;
+        amount++;
+        this.ID = String.valueOf(amount);
+        this.cost = 2;
+        this.revenue = 2;
+        this.capacity = 100;
     }
 
-    public static double transit(Train train, Station start_station, Station finish_station, int revenue)
+    public double transit(Station start_station, Station finish_station)
     {
         int transit_passengers;
-        if(start_station.passengers >= train.capacity)
+        
+        if(start_station.passengers >= capacity)
         {
-            transit_passengers = train.capacity;
+            transit_passengers = capacity;
         }
+        
         else
         {
             transit_passengers = start_station.passengers;
         }
+        
         start_station.passengers -= transit_passengers;
-        int distance_travelled = Math.abs(finish_station.distance - start_station.distance);
-        return revenue * transit_passengers - train.cost * distance_travelled;
+        
+        double distance_travelled = Math.sqrt((finish_station.location[0] - start_station.location[0]) * (finish_station.location[0] - start_station.location[0]) + (finish_station.location[1] - start_station.location[1]) * (finish_station.location[1] - start_station.location[1]));
+        
+        return (revenue * transit_passengers - cost) * distance_travelled;
     }
 }
