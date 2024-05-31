@@ -11,8 +11,9 @@ public class Main
         stations.add(new CityStation("A",0, 0));
         stations.add(new CityStation("B", 200, 200));
         
-        Train train1 = new Train();
-        Train train2 = new Train();
+        ArrayList<Train> trains = new ArrayList<>();
+        
+        trains.add(new Train(stations.get(0), stations.get(1)));
         
         Scanner scanner = new Scanner(System.in);
         
@@ -33,7 +34,10 @@ public class Main
                 station.calculate_passengers(200, 600);
             }
             
-            budget += revenue_mod * train1.transit(stations.get(0), stations.get(1));
+            for(Train train : trains)
+            {
+                budget += revenue_mod * train.transit();
+            }
             
             System.out.println("City A passengers: " + stations.get(0).passengers);
             System.out.println("Budget at the end of day: " + budget);

@@ -6,34 +6,27 @@ public class Train
     double cost; //cost per km
     double revenue; //revenue per passenger per km
     int capacity; //train capacity
+    Station start_station, finish_station; //route stations
+    double route_distance; //distance from start station to finish station in km
     
-    public Train()
+    public Train(Station start_station, Station finish_station)
     {
         amount++;
         this.ID = String.valueOf(amount);
         this.cost = 2;
         this.revenue = 2;
         this.capacity = 100;
+        this.start_station = start_station;
+        this.finish_station = finish_station;
+        this.route_distance = Math.sqrt((finish_station.location[0] - start_station.location[0]) * (finish_station.location[0] - start_station.location[0]) + (finish_station.location[1] - start_station.location[1]) * (finish_station.location[1] - start_station.location[1]));
     }
 
-    public double transit(Station start_station, Station finish_station)
+    public double transit()
     {
-        int transit_passengers;
+        int transit_passengers = Math.min(this.start_station.passengers, this.capacity);
+		
+		this.start_station.passengers -= transit_passengers;
         
-        if(start_station.passengers >= this.capacity)
-        {
-            transit_passengers = this.capacity;
-        }
-        
-        else
-        {
-            transit_passengers = start_station.passengers;
-        }
-        
-        start_station.passengers -= transit_passengers;
-        
-        double distance_travelled = Math.sqrt((finish_station.location[0] - start_station.location[0]) * (finish_station.location[0] - start_station.location[0]) + (finish_station.location[1] - start_station.location[1]) * (finish_station.location[1] - start_station.location[1]));
-        
-        return (this.revenue * transit_passengers - this.cost) * distance_travelled;
+        return (this.revenue * transit_passengers - this.cost) * this.route_distance;
     }
 }
