@@ -4,9 +4,9 @@ public class CityStation extends Station
 {
     Random random = new Random();
     
-    public CityStation(int x, int y)
+    public CityStation(String name, int x, int y)
     {
-        super(x, y);
+        super(name, x, y);
     }
     
     @Override

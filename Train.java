@@ -20,9 +20,9 @@ public class Train
     {
         int transit_passengers;
         
-        if(start_station.passengers >= capacity)
+        if(start_station.passengers >= this.capacity)
         {
-            transit_passengers = capacity;
+            transit_passengers = this.capacity;
         }
         
         else
@@ -34,6 +34,6 @@ public class Train
         
         double distance_travelled = Math.sqrt((finish_station.location[0] - start_station.location[0]) * (finish_station.location[0] - start_station.location[0]) + (finish_station.location[1] - start_station.location[1]) * (finish_station.location[1] - start_station.location[1]));
         
-        return (revenue * transit_passengers - cost) * distance_travelled;
+        return (this.revenue * transit_passengers - this.cost) * distance_travelled;
     }
 }

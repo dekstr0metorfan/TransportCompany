@@ -6,6 +6,14 @@ public class Main
     {
         double budget = 0;
         
+        ArrayList<Station> stations = new ArrayList<>();
+        
+        stations.add(new CityStation("A",0, 0));
+        stations.add(new CityStation("B", 200, 200));
+        
+        Train train1 = new Train();
+        Train train2 = new Train();
+        
         Scanner scanner = new Scanner(System.in);
         
         System.out.println("Maximal simulation time [days]: ");
@@ -14,22 +22,20 @@ public class Main
         
         System.out.println("Ticket prices: ");
         
-        int revenue_mod = scanner.nextInt();
-
-        CityStation CityA = new CityStation(0, 0);
-        CityStation CityB = new CityStation(200, 200);
-
-        Train train1 = new Train();
-        Train train2 = new Train();
+        double revenue_mod = scanner.nextInt();
 
         for(int day = 1; day <= time_limit; day++)
         {
             System.out.println("Simulation day: " + day);
             
-            CityA.calculate_passengers(200, 600);
-            budget += train1.transit(CityA, CityB);
+            for(Station station : stations)
+            {
+                station.calculate_passengers(200, 600);
+            }
             
-            System.out.println("City A passengers: " + CityA.passengers);
+            budget += revenue_mod * train1.transit(stations.get(0), stations.get(1));
+            
+            System.out.println("City A passengers: " + stations.get(0).passengers);
             System.out.println("Budget at the end of day: " + budget);
         }
 
