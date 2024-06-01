@@ -5,42 +5,42 @@ public class Main
     public static void main(String[] args)
     {
         double budget = 0;
-        
-        ArrayList<Station> stations = new ArrayList<>();
-        
-        stations.add(new CityStation("A",0, 0));
-        stations.add(new CityStation("B", 200, 200));
-        
-        ArrayList<Train> trains = new ArrayList<>();
-        
-        trains.add(new Train(stations.get(0), stations.get(1)));
-        
         Scanner scanner = new Scanner(System.in);
-        
-        System.out.println("Maximal simulation time [days]: ");
-        
-        int time_limit = scanner.nextInt();
-        
-        System.out.println("Ticket prices: ");
-        
-        double revenue_mod = scanner.nextInt();
 
-        for(int day = 1; day <= time_limit; day++)
+        ArrayList<Train> trains = new ArrayList<>();
+        ArrayList<Station> stations = new ArrayList<>();
+
+        CityStation A = new CityStation("A",0, 0);
+        VillageStation B = new VillageStation("B", 200, 200);
+
+        stations.add(A);
+        stations.add(B);
+
+        System.out.print("Enter the max. simulation time [days]: ");
+        int max_day = scanner.nextInt();
+
+        System.out.print("Enter the ticket price: ");
+        double revenue = scanner.nextInt();
+
+        System.out.print("Enter the cost of one transit: ");
+        double cost = scanner.nextInt();
+
+        Train train1 = new Train(A, B, cost, revenue);
+        trains.add(train1);
+
+        for(int day = 1; day <= max_day; day++)
         {
             System.out.println("Simulation day: " + day);
-            
-            for(Station station : stations)
-            {
-                station.calculate_passengers(200, 600);
+
+            for(Station station : stations){
+                station.generate_passengers();
+                System.out.println("Passengers on station " + station.name + ": " + station.passengers);
             }
-            
-            for(Train train : trains)
-            {
-                budget += revenue_mod * train.transit();
+
+            for(Train train : trains){
+                budget += train.run_balance();
             }
-            
-            System.out.println("City A passengers: " + stations.get(0).passengers);
-            System.out.println("Budget at the end of day: " + budget);
+            System.out.println("Budget at the end of day: " + budget + "\n");
         }
 
         System.out.println("Total company profit: " + budget);

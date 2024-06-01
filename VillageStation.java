@@ -3,15 +3,18 @@ import java.util.Random;
 public class VillageStation extends Station
 {
     Random random = new Random();
-    
+
     public VillageStation(String name, int x, int y)
     {
         super(name, x, y);
     }
-    
+
     @Override
-    public void calculate_passengers(int min, int max)
+    public void generate_passengers()
     {
-        passengers += random.nextInt((max-min)+1) + min;
+        if (passengers>0) {
+            resetPassengers();
+        }
+        passengers += random.nextInt((150) + 1); // min 0 max 150
     }
 }
