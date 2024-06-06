@@ -5,6 +5,9 @@ public class Main
     public static void main(String[] args)
     {
         double budget = 0;
+        
+        StationGraph station_graph = new StationGraph();
+        
         Scanner scanner = new Scanner(System.in);
 
         ArrayList<Train> trains = new ArrayList<>();
@@ -12,6 +15,8 @@ public class Main
 
         CityStation A = new CityStation("A",0, 0);
         VillageStation B = new VillageStation("B", 200, 200);
+        
+        station_graph.add_station(A);
 
         stations.add(A);
         stations.add(B);

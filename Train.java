@@ -27,7 +27,10 @@ public class Train
         if(start_station.passengers >= capacity)
         {
             transit_passengers = capacity;
-        } else {
+        }
+        
+        else
+        {
             transit_passengers = start_station.passengers;
         }
 
