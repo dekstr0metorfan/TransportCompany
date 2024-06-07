@@ -1,3 +1,5 @@
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.*;
 
 public class Company
@@ -49,8 +51,10 @@ public class Company
 		trains.add(new RegionalTrain(E, F));
 	}
 	
-	public void simulation(int max_day, double cost_mod, double revenue_mod)
+	public void simulation(int max_day, double cost_mod, double revenue_mod) throws IOException
 	{
+		FileWriter fw = new FileWriter("results.txt");
+		
 		for (int day = 1; day <= max_day; day++)
 		{
 			for (Station station : this.station_graph.stations.keySet())
@@ -62,6 +66,13 @@ public class Company
 			{
 				budget += train.transit(cost_mod, revenue_mod);
 			}
+			
+			fw.append(day + "," + budget + "\n");
+			
+			if (budget <= 0)
+				break;
 		}
+		
+		fw.close();
 	}
 }
