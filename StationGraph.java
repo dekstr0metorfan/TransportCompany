@@ -6,12 +6,12 @@ public class StationGraph
 	
 	public StationGraph()
 	{
-		stations = new HashMap<Station, List<Station>>();
+		stations = new HashMap<>();
 	}
 	
 	public void add_station(Station station)
 	{
-		stations.put(station, new ArrayList<Station>());
+		stations.put(station, new ArrayList<>());
 	}
 	
 	public void add_route(Station from, Station to)

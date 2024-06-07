@@ -12,7 +12,7 @@ public abstract class Station
         this.name = name;
         this.location[0] = x;
         this.location[1] = y;
-        this.passengers = new ArrayList<Passenger>();
+        this.passengers = new ArrayList<>();
     }
 
     public abstract void generate_passengers(StationGraph graph);

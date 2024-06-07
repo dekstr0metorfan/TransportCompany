@@ -1,5 +1,4 @@
 import java.util.ArrayList;
-import java.util.List;
 
 public class Train
 {
@@ -28,7 +27,7 @@ public class Train
     {
         int transit_passengers = 0;
         
-        for (Passenger passenger : new ArrayList<Passenger>(start_station.passengers))
+        for (Passenger passenger : new ArrayList<>(start_station.passengers))
         {
             if (passenger.destination == this.finish_station)
             {
