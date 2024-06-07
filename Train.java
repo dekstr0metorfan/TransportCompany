@@ -1,6 +1,6 @@
 import java.util.ArrayList;
 
-public class Train
+public abstract class Train
 {
     int capacity;
     int speed;
@@ -13,10 +13,6 @@ public class Train
     
     public Train(Station start_station, Station finish_station)
     {
-        this.capacity = 100;
-        this.speed = 100;
-        this.cost = 10;
-        this.revenue = 10;
         this.start_station = start_station;
         this.finish_station = finish_station;
         this.route_distance = Math.sqrt((finish_station.location[0] - start_station.location[0]) * (finish_station.location[0] - start_station.location[0]) + (finish_station.location[1] - start_station.location[1]) * (finish_station.location[1] - start_station.location[1]));
