@@ -9,6 +9,6 @@ public class Passenger
 	{
 		Random rand = new Random();
 		
-		this.destination = available_stations.get(rand.nextInt(available_stations.size() + 1));
+		this.destination = available_stations.get(rand.nextInt(available_stations.size()));
 	}
 }

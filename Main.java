@@ -1,50 +1,52 @@
 import java.util.*;
-
+//klasa firmy???
 public class Main
 {
     public static void main(String[] args)
     {
         double budget = 0;
         
+        
         StationGraph station_graph = new StationGraph();
         
-        Scanner scanner = new Scanner(System.in);
-
-        ArrayList<Train> trains = new ArrayList<>();
-        ArrayList<Station> stations = new ArrayList<>();
-
         CityStation A = new CityStation("A",0, 0);
         VillageStation B = new VillageStation("B", 200, 200);
         
         station_graph.add_station(A);
+        station_graph.add_station(B);
+        station_graph.add_route(A, B);
+        
 
-        stations.add(A);
-        stations.add(B);
-
-        System.out.print("Enter the max. simulation time [days]: ");
+        ArrayList<Train> trains = new ArrayList<>();
+        trains.add(new Train(A, B));
+        
+        
+        Scanner scanner = new Scanner(System.in);
+        
+        System.out.print("Enter the max simulation time [days]: ");
         int max_day = scanner.nextInt();
 
-        System.out.print("Enter the ticket price: ");
-        double revenue = scanner.nextInt();
+        System.out.print("Enter the revenue modifier: ");
+        double revenue_mod = scanner.nextInt();
 
-        System.out.print("Enter the cost of one transit: ");
-        double cost = scanner.nextInt();
+        System.out.print("Enter the cost modifier: ");
+        double cost_mod = scanner.nextInt();
 
-        Train train1 = new Train(A, B, cost, revenue);
-        trains.add(train1);
-
-        for(int day = 1; day <= max_day; day++)
+        for (int day = 1; day <= max_day; day++)
         {
             System.out.println("Simulation day: " + day);
 
-            for(Station station : stations){
-                station.generate_passengers();
-                System.out.println("Passengers on station " + station.name + ": " + station.passengers);
+            for (Station station : station_graph.stations.keySet())
+            {
+                station.generate_passengers(station_graph); //caly graf czy lista???
             }
 
-            for(Train train : trains){
-                budget += train.run_balance();
+            for (Train train : trains)
+            {
+                budget += train.transit();
             }
+            
+            System.out.println(A.passengers.size());
             System.out.println("Budget at the end of day: " + budget + "\n");
         }
 
