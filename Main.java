@@ -25,12 +25,12 @@ public class Main
         
         System.out.print("Enter the max simulation time [days]: ");
         int max_day = scanner.nextInt();
-
+        
         System.out.print("Enter the revenue modifier: ");
-        double revenue_mod = scanner.nextInt();
+        double revenue_mod = scanner.nextDouble();
 
         System.out.print("Enter the cost modifier: ");
-        double cost_mod = scanner.nextInt();
+        double cost_mod = scanner.nextDouble();
 
         for (int day = 1; day <= max_day; day++)
         {
@@ -43,7 +43,7 @@ public class Main
 
             for (Train train : trains)
             {
-                budget += train.transit();
+                budget += train.transit(cost_mod, revenue_mod);
             }
             
             System.out.println(A.passengers.size());

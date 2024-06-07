@@ -24,7 +24,7 @@ public class Train
         this.number_of_transits = (int)(this.route_distance / this.speed);
     }
     
-    public double transit()
+    public double transit(double cost_mod, double revenue_mod)
     {
         int transit_passengers = 0;
         
@@ -47,6 +47,6 @@ public class Train
             this.finish_station = temp;
         }
         
-        return ((this.revenue * transit_passengers - this.cost) * this.route_distance) * this.number_of_transits;
+        return ((transit_passengers * this.revenue * revenue_mod - this.cost * cost_mod) * this.route_distance) * this.number_of_transits;
     }
 }
