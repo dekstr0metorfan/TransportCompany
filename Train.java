@@ -2,21 +2,21 @@ import java.util.ArrayList;
 
 public abstract class Train
 {
-    int capacity;
-    int speed;
-    double cost; //cost per km
-    double revenue; //revenue per passenger per km
-    Station start_station;
-    Station finish_station;
-    double route_distance;
-    int number_of_transits;
+    protected int capacity;
+    protected int speed;
+    protected double cost; //cost per km
+    protected double revenue; //revenue per passenger per km
+    protected Station start_station;
+    protected Station finish_station;
+    protected final double ROUTE_DISTANCE;
+    protected final int NUMBER_OF_TRANSITS;
     
     public Train(Station start_station, Station finish_station)
     {
         this.start_station = start_station;
         this.finish_station = finish_station;
-        this.route_distance = Math.sqrt((finish_station.location[0] - start_station.location[0]) * (finish_station.location[0] - start_station.location[0]) + (finish_station.location[1] - start_station.location[1]) * (finish_station.location[1] - start_station.location[1]));
-        this.number_of_transits = (int)(this.route_distance / this.speed);
+        this.ROUTE_DISTANCE = Math.sqrt((finish_station.location[0] - start_station.location[0]) * (finish_station.location[0] - start_station.location[0]) + (finish_station.location[1] - start_station.location[1]) * (finish_station.location[1] - start_station.location[1]));
+        this.NUMBER_OF_TRANSITS = (int)(this.ROUTE_DISTANCE / this.speed);
     }
     
     public double transit(double cost_mod, double revenue_mod)
@@ -25,7 +25,7 @@ public abstract class Train
         
         for (Passenger passenger : new ArrayList<>(start_station.passengers))
         {
-            if (passenger.destination == this.finish_station)
+            if (passenger.get_destination() == this.finish_station)
             {
                 transit_passengers++;
                 start_station.passengers.remove(passenger);
@@ -35,13 +35,13 @@ public abstract class Train
             }
         }
         
-        if (this.number_of_transits % 2 != 0)
+        if (this.NUMBER_OF_TRANSITS % 2 != 0)
         {
             Station temp = this.start_station;
             this.start_station = this.finish_station;
             this.finish_station = temp;
         }
         
-        return ((transit_passengers * this.revenue * revenue_mod - this.cost * cost_mod) * this.route_distance) * this.number_of_transits;
+        return ((transit_passengers * this.revenue * revenue_mod - this.cost * cost_mod) * this.ROUTE_DISTANCE) * this.NUMBER_OF_TRANSITS;
     }
 }

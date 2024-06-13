@@ -2,7 +2,7 @@ import java.util.*;
 
 public class StationGraph
 {
-	public Map<Station, List<Station>> stations;
+	Map<Station, List<Station>> stations;
 	
 	public StationGraph()
 	{

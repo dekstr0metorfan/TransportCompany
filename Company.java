@@ -4,9 +4,9 @@ import java.util.*;
 
 public class Company
 {
-	double budget;
-	StationGraph station_graph;
-	List<Train> trains;
+	private double budget;
+	private StationGraph station_graph;
+	private List<Train> trains;
 	
 	public Company()
 	{
@@ -53,7 +53,7 @@ public class Company
 	
 	public void simulation(int max_day, double cost_mod, double revenue_mod) throws IOException
 	{
-		FileWriter fw = new FileWriter("results.txt");
+		FileWriter fw = new FileWriter("results.csv");
 		
 		for (int day = 1; day <= max_day; day++)
 		{
