@@ -14,12 +14,12 @@ public class Company
 		this.station_graph = new StationGraph();
 		this.trains = new ArrayList<>();
 		
-		CityStation A = new CityStation("A",0, 0);
-		CityStation B = new CityStation("B", 800, 100);
-		CityStation C = new CityStation("C", 350, 400);
-		VillageStation D = new VillageStation("D", 200, 200);
-		VillageStation E = new VillageStation("E", 400, 200);
-		VillageStation F = new VillageStation("F", 600, 150);
+		CityStation A = new CityStation(0, 0);
+		CityStation B = new CityStation(800, 100);
+		CityStation C = new CityStation(350, 400);
+		VillageStation D = new VillageStation(200, 200);
+		VillageStation E = new VillageStation(400, 200);
+		VillageStation F = new VillageStation(600, 150);
 		
 		station_graph.add_station(A);
 		station_graph.add_station(B);
