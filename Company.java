@@ -10,7 +10,7 @@ public class Company
 	
 	public Company()
 	{
-		this.budget = 0;
+		this.budget = 100000;
 		this.station_graph = new StationGraph();
 		this.trains = new ArrayList<>();
 		
@@ -51,7 +51,7 @@ public class Company
 		trains.add(new RegionalTrain(E, F));
 	}
 	
-	public void simulation(int max_day, double cost_mod, double revenue_mod) throws IOException
+	public void simulation(int max_day, double revenue_mod, double cost_mod) throws IOException
 	{
 		FileWriter fw = new FileWriter("results.csv");
 		
@@ -64,7 +64,7 @@ public class Company
 			
 			for (Train train : this.trains)
 			{
-				budget += train.transit(cost_mod, revenue_mod);
+				budget += train.transit(revenue_mod, cost_mod);
 			}
 			
 			fw.append(day + "," + budget + "\n");

@@ -5,7 +5,8 @@ public class ExpressTrain extends Train
 		super(start_station, end_station);
 		this.capacity = 800;
 		this.speed = 150;
-		this.cost = 20;
-		this.revenue = 0.1;
+		this.cost = 65;
+		this.revenue = 0.13;
+		this.number_of_transits = (int)(24 / (this.ROUTE_DISTANCE / this.speed));
 	}
 }
