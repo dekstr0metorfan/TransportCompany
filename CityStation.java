@@ -25,7 +25,7 @@ public class CityStation extends Station
     @Override
     public void generate_passengers(StationGraph graph)
     {
-        int number_of_passengers = (int)((random.nextGaussian() + 1) * 2500 + 500);
+        int number_of_passengers = (int)((random.nextGaussian() + 1) * 1500);
         
         for (int i = 0; i < number_of_passengers; i++)
         {
