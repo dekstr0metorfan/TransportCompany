@@ -11,6 +11,7 @@ public class Main
      */
     public static void main(String[] args)
 	{
-        Simulation simulation = new Simulation();
+        GUI gui = new GUI();
+        gui.setVisible(true);
     }
 }
