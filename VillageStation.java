@@ -25,7 +25,7 @@ public class VillageStation extends Station
     @Override
     public void generate_passengers(StationGraph graph)
     {
-        int number_of_passengers = random.nextInt((900) + 100);
+        int number_of_passengers = random.nextInt(600);
         
         for (int i = 0; i < number_of_passengers; i++)
         {
