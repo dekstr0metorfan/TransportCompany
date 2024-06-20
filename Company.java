@@ -49,7 +49,8 @@ public class Company
 		trains.add(new RegionalTrain(C, E));
 		trains.add(new RegionalTrain(D, E));
 		trains.add(new RegionalTrain(E, F));
-	}
+
+    }
 	
 	public void simulation(int max_day, double revenue_mod, double cost_mod) throws IOException
 	{

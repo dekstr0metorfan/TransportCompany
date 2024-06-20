@@ -7,6 +7,6 @@ public class ExpressTrain extends Train
 		this.speed = 150;
 		this.cost = 65;
 		this.revenue = 0.13;
-		this.number_of_transits = (int)(24 / (this.ROUTE_DISTANCE / this.speed));
+		this.number_of_transits = (int) (24 / (this.ROUTE_DISTANCE / this.speed));
 	}
 }
