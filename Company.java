@@ -26,7 +26,7 @@ public class Company
 	 */
 	public Company()
 	{
-		this.budget = 100000;
+		this.budget = 1000000;
 		this.station_graph = new StationGraph();
 		this.trains = new ArrayList<>();
 		
