@@ -6,12 +6,29 @@ import java.io.IOException;
 
 import static javax.swing.JOptionPane.showMessageDialog;
 
+/**
+ * This class is responsible for representing a graphical user interface
+ */
 public class GUI extends JFrame
 {
+    /**
+     * Maximum number of days for which the simulation lasts
+     */
     private int max_day;
+    /**
+     * Revenue modifier
+     */
     private double revenue_mod;
+    /**
+     * Cost modifier
+     */
     private double cost_mod;
-    public GUI(){
+
+    /**
+     * Constructs a new GUI for the transport company simulation.
+     */
+    public GUI()
+    {
         setSize(600,350);
         setTitle("Transport Company");
         setResizable(false);
@@ -21,7 +38,11 @@ public class GUI extends JFrame
         newGUI();
     }
 
-    public void newGUI(){
+    /**
+     * This method is responsible for setting up the components and layout of the GUI
+     */
+    public void newGUI()
+    {
 
         JPanel centralPanel = new JPanel(new GridLayout(3,2,2,2));
         centralPanel.setBorder(BorderFactory.createEmptyBorder(25,25,25,25));

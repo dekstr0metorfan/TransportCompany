@@ -2,12 +2,28 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.*;
 
+/**
+ * This class is responsible for constructing Company object
+ * and running the simulation.
+ */
 public class Company
 {
+	/**
+	 * Budget of the Company
+	 */
 	private double budget;
+	/**
+	 * Graph with stations and routes
+	 */
 	private StationGraph station_graph;
+	/**
+	 * List containing all trains
+	 */
 	private List<Train> trains;
-	
+
+	/**
+	 * Constructs a new Company object
+	 */
 	public Company()
 	{
 		this.budget = 100000;
@@ -51,7 +67,14 @@ public class Company
 		trains.add(new RegionalTrain(E, F));
 
     }
-	
+
+	/**
+	 * The method responsible for carrying out the simulation
+	 * @param max_day maximum number of days for which the simulation lasts
+	 * @param revenue_mod revenue modifier
+	 * @param cost_mod cost modifier
+	 * @throws IOException if any problems related to input/output operations happens
+	 */
 	public void simulation(int max_day, double revenue_mod, double cost_mod) throws IOException
 	{
 		FileWriter fw = new FileWriter("results.csv");

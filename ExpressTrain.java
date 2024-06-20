@@ -1,5 +1,14 @@
+/**
+ * ExpressTrain inherits from Train.
+ * This class is responsible for managing ExpressTrain object.
+ */
 public class ExpressTrain extends Train
 {
+	/**
+	 * Constructs ExpressTrain object
+	 * @param start_station starting station
+	 * @param end_station finish station
+	 */
 	public ExpressTrain(CityStation start_station, CityStation end_station)
 	{
 		super(start_station, end_station);

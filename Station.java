@@ -1,11 +1,26 @@
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * This abstract class is responsible for creating Station object.
+ * CityStation and VillageStation classes inherit from this class.
+ */
 public abstract class Station
 {
-    int[] location = new int[2]; //location of the station on a grid in km
-    List<Passenger> passengers; //list of passengers on the station
+    /**
+     * Location of the station on a grid in kilometers
+     */
+    int[] location = new int[2];
+    /**
+     * List of passengers on the station
+     */
+    List<Passenger> passengers;
 
+    /**
+     * Constructs the Station object
+     * @param x position on the X axis
+     * @param y position on the Y axis
+     */
     public Station(int x, int y)
     {
         this.location[0] = x;
@@ -13,5 +28,9 @@ public abstract class Station
         this.passengers = new ArrayList<>();
     }
 
+    /**
+     * Abstract method responsible for generating passengers on the station
+     * @param graph StationGraph with stations and their connections to other stations
+     */
     public abstract void generate_passengers(StationGraph graph);
 }

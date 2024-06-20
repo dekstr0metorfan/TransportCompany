@@ -1,5 +1,14 @@
+/**
+ * RegionalTrain inherits from Train.
+ * This class is responsible for managing RegionalTrain object.
+ */
 public class RegionalTrain extends Train
 {
+	/**
+	 * Constructs RegionalTrain object
+	 * @param start_station starting station
+	 * @param end_station finish station
+	 */
 	public RegionalTrain(Station start_station, Station end_station)
 	{
 		super(start_station, end_station);
