@@ -41,3 +41,7 @@ Click „Run Simulation”. After that, the following window will appear:
 
 In order to stop the program, close the window. The simulation results will be available in a .csv
 file in the folder where the program is located.
+
+### Project documentation
+
+Full project documentation is available [here](https://github.com/dekstr0metorfan/TransportCompany/blob/main/Project_documentation/project_documentation.pdf).
